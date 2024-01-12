@@ -1,0 +1,118 @@
+.weather {
+    width: 18em;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wrapper {
+        height: 50vh;
+    }
+    .weather-card {
+        width: 18em;
+        height: 100%;
+        perspective: 1000px;
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+
+            .front,
+            .back {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                backface-visibility: hidden;
+
+                button {
+                    margin-top: 10px;
+                }
+            }
+
+            .front {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: #fff;
+            }
+
+            .back {
+                transform: rotateY(180deg);
+                background-color: #f0f0f0;
+                box-sizing: border-box;
+
+                .footer {
+                    #weatherInfo {
+                        text-align: center;
+
+                        .yesterday {
+                            margin-top: 0.5em;
+                        }
+                        .item {
+                            padding: 0;
+                            font-weight: 800;
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                    }
+                }
+
+                .header {
+                    position: relative;
+                    height: 18em;
+                    background-image: url("../../weather/img/sunny.jpg");
+                    background-size: cover;
+                    background-position: center;
+                    width: 18em;
+                    display: flex;
+                    justify-content: center;
+                    align-items: baseline;
+
+                    .icon {
+                        margin-top: 1em;
+                        cursor: pointer;
+                        height: 1.5em;
+                        width: 1.5em;
+                        color: white;
+                        z-index: 3;
+                    }
+
+                    .left {
+                        position: absolute;
+                        left: 1em;
+                    }
+
+                    .setting {
+                        position: absolute;
+                        right: 1em;
+                    }
+
+                    .text-overlay {
+                        position: absolute;
+                        height: 100%;
+                        top: 4em;
+                        width: 100%;
+                        text-align: center;
+                        color: white;
+                        z-index: 2;
+                    }
+
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.65);
+                        z-index: 1;
+                    }
+                }
+            }
+        }
+    }
+}
